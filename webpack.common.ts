@@ -26,17 +26,7 @@ const config: Configuration = {
   },
   plugins: [
     new CopyPlugin({
-      patterns: [
-        { from: 'styles/**/*.css', to: 'css/[name][ext]' },
-        {
-          from: 'node_modules/todomvc-common/*.css',
-          to: 'css/todomvc-common/[name][ext]',
-        },
-        {
-          from: 'node_modules/todomvc-app-css/*.css',
-          to: 'css/todomvc-app-css/[name][ext]',
-        },
-      ],
+      patterns: [{ from: 'styles/**/*.css', to: 'css/[name][ext]' }],
     }),
     new HtmlWebpackPlugin({ template: 'src/index.ejs' }),
   ],

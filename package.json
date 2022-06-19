@@ -1,7 +1,7 @@
 {
-  "name": "react.ts.template",
+  "name": "scrumdinger",
   "version": "0.42.0",
-  "description": "react application template in typescript",
+  "description": "react application for Apple's ScrumDinger from iOS tutorial",
   "main": "src/index.ts",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx",
@@ -56,10 +56,10 @@
     "@types/webpack": "^5.28.0"
   },
   "dependencies": {
+    "bootstrap": "^5.1.3",
     "react": "^16.14.0",
+    "react-bootstrap": "^2.4.0",
     "react-dom": "^16.14.0",
-    "react-query": "^3.39.0",
-    "todomvc-app-css": "^2.0.0",
-    "todomvc-common": "^1.0.0"
+    "react-query": "^3.39.0"
   }
 }

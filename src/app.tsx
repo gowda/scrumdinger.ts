@@ -1,33 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Container } from 'react-bootstrap';
 
-import Header from './header';
-import ToggleAllButton from './toggle-all-button';
-import List from './list';
-import ListFooter from './list/footer';
-import Footer from './footer';
-import { Filter } from './filter';
-import { useAllCount } from './queries';
+import Meeting from './meeting';
 
-export default () => {
-  const [filter, setFilter] = useState<Filter>('all');
-  const { data: count } = useAllCount();
-
-  return (
-    <>
-      <section className='todoapp'>
-        <Header />
-        <section className='main'>
-          {count !== 0 && <ToggleAllButton />}
-          {count !== 0 && <List filter={filter} />}
-        </section>
-        {count !== 0 && (
-          <ListFooter
-            filter={filter}
-            onUpdateFilter={(change) => setFilter(change)}
-          />
-        )}
-      </section>
-      <Footer />
-    </>
-  );
-};
+export default () => (
+  <Container fluid>
+    <Meeting />
+  </Container>
+);
