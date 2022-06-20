@@ -2,10 +2,10 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import NewScrumForm from './new-scrum-form';
+import NewScrum from './new-scrum';
 import Scrums from './scrums';
 import Scrum from './scrum';
-import Editor from './editor';
+import EditScrum from './edit-scrum';
 import Meeting from './meeting';
 
 export default () => (
@@ -13,9 +13,9 @@ export default () => (
     <Container fluid>
       <Routes>
         <Route path='/' element={<Scrums />} />
-        <Route path='/scrums/new' element={<NewScrumForm />} />
+        <Route path='/scrums/new' element={<NewScrum />} />
         <Route path='/scrums/:id/meeting' element={<Meeting />} />
-        <Route path='/scrums/:id/edit' element={<Editor />} />
+        <Route path='/scrums/:id/edit' element={<EditScrum />} />
         <Route path='/scrums/:id' element={<Scrum />} />
       </Routes>
     </Container>

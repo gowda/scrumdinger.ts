@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Component from './editor/component';
+import Editor from './editor';
 import { DailyScrumAttrs, useCreateScrumMutation } from './queries';
 import { Themes } from './theme';
 
@@ -19,7 +19,7 @@ export default () => {
   const [saving, setSaving] = useState<boolean>(false);
 
   return (
-    <Component
+    <Editor
       saving={saving}
       onUpdate={(attrs) => {
         setSaving(true);

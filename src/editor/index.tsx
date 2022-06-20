@@ -1,35 +1,59 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { Row, Col, Button } from 'react-bootstrap';
+import { Controller, useForm } from 'react-hook-form';
 
-import LoadingMessage from '../components/loading-message';
-import ErrorMessage from '../components/error-message';
-import Component from './component';
+import { DailyScrum } from '../daily-scrum';
+import MeetingInfo from './meeting-info';
+import Attendees from './attendees';
+import { DailyScrumAttrs } from '../queries';
 
-import { useScrum, useUpdateScrumMutation } from '../queries';
+type Props = Omit<DailyScrum, 'id'> & {
+  saving: boolean;
+  onUpdate: (attrs: DailyScrumAttrs) => void;
+};
 
-export default () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const { isLoading, isError, error, isSuccess, data: scrum } = useScrum(id);
-  const { mutateAsync: update } = useUpdateScrumMutation(id);
-  const [saving, setSaving] = useState<boolean>(false);
+export default ({ saving, onUpdate, ...props }: Props) => {
+  const {
+    meetingInfo: { title },
+  } = props;
+  const { control, handleSubmit } = useForm<DailyScrum>({
+    defaultValues: props,
+  });
 
   return (
-    <>
-      {isLoading && <LoadingMessage />}
-      {isError && error && <ErrorMessage message={error.message} />}
-      {isSuccess && scrum && (
-        <Component
-          saving={saving}
-          onUpdate={(attrs) => {
-            setSaving(true);
-            update(attrs)
-              .then(() => setSaving(false))
-              .then(() => navigate(-1));
-          }}
-          {...scrum}
+    <Row className='justify-content-center p-4'>
+      <Col xs={12} sm={6}>
+        <Row className='align-items-center'>
+          <Col>
+            <h2 className='my-0'>{title}</h2>
+          </Col>
+          <Col xs='auto'>
+            <Button
+              variant='link'
+              className='shadow-none'
+              style={{ textDecoration: 'none' }}
+              disabled={saving}
+              onClick={handleSubmit(onUpdate)}
+            >
+              {saving ? 'Saving' : 'Save'}
+            </Button>
+          </Col>
+        </Row>
+        <Controller
+          control={control}
+          name='meetingInfo'
+          render={({ field: { value, onChange } }) => (
+            <MeetingInfo {...value} onChange={onChange} />
+          )}
         />
-      )}
-    </>
+        <Controller
+          control={control}
+          name='attendees'
+          render={({ field: { value, onChange } }) => (
+            <Attendees attendees={value} onChange={onChange} />
+          )}
+        />
+      </Col>
+    </Row>
   );
 };
