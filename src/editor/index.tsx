@@ -25,7 +25,7 @@ export default () => {
             setSaving(true);
             update(attrs)
               .then(() => setSaving(false))
-              .then(() => navigate(`/scrums/${id}`, { replace: true }));
+              .then(() => navigate(-1));
           }}
           {...scrum}
         />
