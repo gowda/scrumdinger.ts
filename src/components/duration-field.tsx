@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import FormRange from 'react-bootstrap/esm/FormRange';
 
-import Label from '../components/label';
+import Label from './label';
 
 interface Props {
   value: number;

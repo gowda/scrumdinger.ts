@@ -5,7 +5,7 @@ import { DeepMap, DeepPartial, FieldError } from 'react-hook-form';
 import { DailyScrumMeetingInfo } from '../daily-scrum';
 import SectionTitle from '../components/section-title';
 import TextField from '../components/text-field';
-import DurationField from './duration-field';
+import DurationField from '../components/duration-field';
 import ThemeField from '../components/theme-field';
 
 type Props = DailyScrumMeetingInfo & {
