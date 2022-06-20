@@ -11,6 +11,6 @@ export default ({ meetingInfo: { lengthInMinutes }, attendees }: Props) => (
   <div className='d-flex flex-column justify-content-between py-4'>
     <TimeProgress lengthInMinutes={lengthInMinutes} />
     <Progress />
-    <SpeakerProgress attendees={attendees} />
+    <SpeakerProgress lengthInMinutes={lengthInMinutes} attendees={attendees} />
   </div>
 );
