@@ -18,7 +18,7 @@ export enum Theme {
 }
 
 type HexColor = `#${string}`;
-type Color = 'black' | 'white' | HexColor;
+export type Color = 'inherit' | 'black' | 'white' | HexColor;
 
 export const accentColor = (theme: Theme): Color => {
   switch (theme) {

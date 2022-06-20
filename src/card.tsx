@@ -1,5 +1,7 @@
 import React from 'react';
 import { Row, Col, Stack } from 'react-bootstrap';
+
+import Label from './components/label';
 import { DailyScrum } from './daily-scrum';
 
 type Props = Pick<DailyScrum, 'title' | 'attendees' | 'lengthInMinutes'>;
@@ -13,24 +15,14 @@ export default ({ title, attendees, lengthInMinutes }: Props) => (
     </Row>
     <Row className='justify-content-between'>
       <Col xs='auto'>
-        <Row>
-          <Col xs='auto'>
-            <i className='bi-people' />
-          </Col>
-          <Col xs='auto' className='px-0'>
-            {attendees.length}
-          </Col>
-        </Row>
+        <Label icon='people' color='inherit'>
+          {attendees.length}
+        </Label>
       </Col>
       <Col xs='auto'>
-        <Row>
-          <Col xs='auto' className='px-0'>
-            {lengthInMinutes}
-          </Col>
-          <Col xs='auto'>
-            <i className='bi-clock' />
-          </Col>
-        </Row>
+        <Label icon='clock' color='inherit' reversed>
+          {lengthInMinutes}
+        </Label>
       </Col>
     </Row>
   </Stack>
