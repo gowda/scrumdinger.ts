@@ -6,6 +6,7 @@ import { DailyScrumMeetingInfo } from '../daily-scrum';
 
 import SectionTitle from '../components/section-title';
 import Label from '../components/label';
+import Duration from './duration';
 
 type Props = DailyScrumMeetingInfo & { id: string };
 
@@ -31,12 +32,7 @@ export default ({ id, lengthInMinutes, theme }: Props) => (
             </Link>
           </ListGroupItem>
           <ListGroupItem>
-            <Row className='justify-content-between'>
-              <Col xs='auto'>
-                <Label icon='clock'>Length</Label>
-              </Col>
-              <Col xs='auto'>{`${lengthInMinutes} minutes`}</Col>
-            </Row>
+            <Duration value={lengthInMinutes} />
           </ListGroupItem>
           <ListGroupItem>
             <Row className='justify-content-between'>
