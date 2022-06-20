@@ -1,28 +1,39 @@
-import { useMutation, useQuery } from 'react-query';
-import { DailyScrum, sampleData as sourceSampleData } from './daily-scrum';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { DailyScrum, sampleData } from './daily-scrum';
+import { getScrums, setScrums } from './store';
 
-let sampleData = sourceSampleData;
+getScrums().then((scrums) =>
+  scrums.length === 0 ? setScrums(sampleData) : scrums
+);
 
 export const useScrums = () =>
-  useQuery<DailyScrum[], Error>(['scrums'], () => Promise.resolve(sampleData));
+  useQuery<DailyScrum[], Error>(['scrums'], () => getScrums());
 
 export const useScrum = (id?: string) =>
-  useQuery<DailyScrum, Error>(['scrums', id], () => {
-    const scrum = sampleData.find(({ id: scrumId }) => scrumId === id);
-    if (scrum) {
-      return Promise.resolve(scrum);
-    }
-
-    return Promise.reject(new Error(`DailyScrum not found with id ${id}`));
-  });
+  useQuery<DailyScrum, Error>(['scrums', id], () =>
+    getScrums()
+      .then((scrums) => scrums.find(({ id: scrumId }) => scrumId === id))
+      .then((scrum) => {
+        if (scrum) {
+          return scrum;
+        }
+        throw new Error(`DailyScrum not found with id ${id}`);
+      })
+  );
 
 export type DailyScrumAttrs = Omit<DailyScrum, 'id'>;
 
-export const useUpdateScrumMutation = (id?: string) =>
-  useMutation((attrs: DailyScrumAttrs) => {
-    sampleData = sampleData.map(({ id: scrumId, ...rest }) =>
-      scrumId === id ? { id, ...rest, ...attrs } : { id: scrumId, ...rest }
-    );
+export const useUpdateScrumMutation = (id?: string) => {
+  const queryClient = useQueryClient();
 
-    return Promise.resolve({ message: 'Updated' });
-  });
+  return useMutation((attrs: DailyScrumAttrs) =>
+    getScrums()
+      .then((scrums) =>
+        scrums.map(({ id: scrumId, ...rest }) =>
+          scrumId === id ? { id, ...rest, ...attrs } : { id: scrumId, ...rest }
+        )
+      )
+      .then((scrums) => setScrums(scrums))
+      .then(() => queryClient.invalidateQueries(['scrums']))
+  );
+};
