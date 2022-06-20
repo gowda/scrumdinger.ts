@@ -1,7 +1,10 @@
 import React from 'react';
 import { Row, Col, ProgressBar, Stack, Button } from 'react-bootstrap';
+import { DailyScrum } from '../daily-scrum';
 
-export default () => (
+type Props = DailyScrum;
+
+export default (_props: Props) => (
   <Row className='justify-content-center p-4' style={{ minHeight: '100vh' }}>
     <Col
       xs={12}
