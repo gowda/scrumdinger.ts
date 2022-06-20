@@ -1,13 +1,12 @@
 import React from 'react';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
-
 import { DeepMap, DeepPartial, FieldError } from 'react-hook-form';
-import { DailyScrumMeetingInfo } from '../daily-scrum';
 
+import { DailyScrumMeetingInfo } from '../daily-scrum';
 import SectionTitle from '../components/section-title';
 import TextField from '../components/text-field';
 import DurationField from './duration-field';
-import ThemeField from './theme-field';
+import ThemeField from '../components/theme-field';
 
 type Props = DailyScrumMeetingInfo & {
   errors?: DeepMap<DeepPartial<DailyScrumMeetingInfo>, FieldError>;

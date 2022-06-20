@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 
-import { Theme, Themes } from '../theme';
+import { Theme, Themes } from '../../theme';
 
 interface Props {
   value: Theme;
