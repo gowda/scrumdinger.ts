@@ -30,6 +30,9 @@ const config = (env: 'development' | 'production'): Configuration => ({
       patterns: [{ from: 'styles/**/*.css', to: 'css/[name][ext]' }],
     }),
     new CopyPlugin({
+      patterns: [{ from: 'public/images/**/*.png', to: 'images/[name][ext]' }],
+    }),
+    new CopyPlugin({
       patterns: [{ from: 'public/favicon.ico', to: 'favicon.ico' }],
     }),
     new HtmlWebpackPlugin({ template: 'src/index.ejs' }),
