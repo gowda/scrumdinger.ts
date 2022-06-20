@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 
-import Label from './label';
+import Label from '../components/label';
 import { DailyScrum } from '../daily-scrum';
 
 type Props = Pick<DailyScrum, 'attendees'>;

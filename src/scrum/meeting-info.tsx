@@ -3,7 +3,7 @@ import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 import { DailyScrum } from '../daily-scrum';
 import { mainColor, Theme } from '../theme';
-import Label from './label';
+import Label from '../components/label';
 
 type Props = Pick<DailyScrum, 'lengthInMinutes' | 'theme'>;
 
