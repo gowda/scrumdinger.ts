@@ -25,24 +25,12 @@ export default ({ errors, onChange, ...props }: Props) => {
         <Col>
           <ListGroup>
             <ListGroupItem>
-              <Row className='align-items-center'>
-                <Col>
-                  <TextField
-                    placeholder='Scrum title...'
-                    value={title}
-                    onChange={(change) => onChange({ ...props, title: change })}
-                  />
-                </Col>
-              </Row>
-              {errors?.title?.message && (
-                <Row className='mt-1'>
-                  <Col>
-                    <span className='text-danger'>
-                      {errors?.title?.message}
-                    </span>
-                  </Col>
-                </Row>
-              )}
+              <TextField
+                placeholder='Scrum title...'
+                value={title}
+                errorMessage={errors?.title?.message}
+                onChange={(change) => onChange({ ...props, title: change })}
+              />
             </ListGroupItem>
             <ListGroupItem>
               <DurationField
