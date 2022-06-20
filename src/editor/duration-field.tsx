@@ -17,6 +17,7 @@ export default ({ value, onChange }: Props) => (
     </Col>
     <Col>
       <FormRange
+        value={value}
         min='5'
         max='30'
         onChange={({ target: { value: change } }) =>
