@@ -46,7 +46,10 @@ export default ({ id, lengthInMinutes, theme }: Props) => (
               <Col
                 xs='auto'
                 className='rounded'
-                style={{ backgroundColor: theme.mainColor }}
+                style={{
+                  backgroundColor: theme.mainColor,
+                  color: theme.accentColor,
+                }}
               >
                 {theme.name}
               </Col>
