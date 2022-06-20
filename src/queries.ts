@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { DailyScrum, sampleData } from './daily-scrum';
-import { getScrums, setScrums } from './store';
+import { getId, getScrums, setScrums } from './store';
 
 getScrums().then((scrums) =>
   scrums.length === 0 ? setScrums(sampleData) : scrums
@@ -36,4 +36,18 @@ export const useUpdateScrumMutation = (id?: string) => {
       .then((scrums) => setScrums(scrums))
       .then(() => queryClient.invalidateQueries(['scrums']))
   );
+};
+
+export const useCreateScrumMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation((attrs: DailyScrumAttrs) => {
+    const scrum = { id: getId(), ...attrs };
+
+    return getScrums()
+      .then((scrums) => [scrum, ...scrums])
+      .then((scrums) => setScrums(scrums))
+      .then(() => queryClient.invalidateQueries(['scrums']))
+      .then(() => scrum);
+  });
 };

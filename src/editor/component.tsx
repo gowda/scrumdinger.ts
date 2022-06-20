@@ -7,7 +7,7 @@ import MeetingInfo from './meeting-info';
 import Attendees from './attendees';
 import { DailyScrumAttrs } from '../queries';
 
-type Props = DailyScrum & {
+type Props = Omit<DailyScrum, 'id'> & {
   saving: boolean;
   onUpdate: (attrs: DailyScrumAttrs) => void;
 };
