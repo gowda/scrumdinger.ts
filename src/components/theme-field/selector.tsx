@@ -13,7 +13,7 @@ export default ({ value, onSelect }: Props) => (
     {Object.keys(Themes)
       .map((key) => Themes[key])
       .map((theme) => (
-        <ListGroupItem className='border-bottom-0'>
+        <ListGroupItem key={theme.name} className='border-bottom-0'>
           <Row>
             <Col>
               <Button

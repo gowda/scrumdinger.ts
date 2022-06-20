@@ -14,7 +14,7 @@ interface Props {
 
 export default ({ value, onChange }: Props) => {
   const [showSelector, setShowSelector] = useState<boolean>(false);
-  const [target, setTarget] = useState<EventTarget | null>(null);
+  const [target, setTarget] = useState<HTMLButtonElement>();
 
   return (
     <Row className='justify-content-between align-items-center'>
@@ -24,7 +24,7 @@ export default ({ value, onChange }: Props) => {
       <Col>
         <Button
           value={value}
-          onClick={({ target: eventTarget }) => {
+          onClick={(eventTarget) => {
             setShowSelector(!showSelector);
             setTarget(eventTarget);
           }}
@@ -33,13 +33,14 @@ export default ({ value, onChange }: Props) => {
           <Popover
             id='theme-selector'
             arrowProps={{ style: { display: 'none' } }}
-            style={{ minWidth: '36vw' }}
+            style={{ minWidth: '38vw' }}
           >
             <Popover.Body className='w-100'>
               <Selector
                 value={value}
                 onSelect={(change) => {
                   onChange(change);
+                  setShowSelector(false);
                 }}
               />
             </Popover.Body>
