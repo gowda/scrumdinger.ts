@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 
+import { DeepMap, DeepPartial, FieldError } from 'react-hook-form';
 import { DailyScrumMeetingInfo } from '../daily-scrum';
 
 import SectionTitle from '../components/section-title';
@@ -10,10 +11,11 @@ import DurationField from './duration-field';
 import ThemeField from './theme-field';
 
 type Props = DailyScrumMeetingInfo & {
+  errors?: DeepMap<DeepPartial<DailyScrumMeetingInfo>, FieldError>;
   onChange: (attrs: DailyScrumMeetingInfo) => void;
 };
 
-export default ({ onChange, ...props }: Props) => {
+export default ({ errors, onChange, ...props }: Props) => {
   const { title, lengthInMinutes, theme } = props;
 
   return (
@@ -31,6 +33,15 @@ export default ({ onChange, ...props }: Props) => {
                   />
                 </Col>
               </Row>
+              {errors?.title?.message && (
+                <Row className='mt-1'>
+                  <Col>
+                    <span className='text-danger'>
+                      {errors?.title?.message}
+                    </span>
+                  </Col>
+                </Row>
+              )}
             </ListGroupItem>
             <ListGroupItem>
               <DurationField

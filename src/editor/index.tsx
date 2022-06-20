@@ -1,11 +1,19 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { DailyScrum } from '../daily-scrum';
 import MeetingInfo from './meeting-info';
 import Attendees from './attendees';
 import { DailyScrumAttrs } from '../queries';
+
+const schema = yup.object({
+  meetingInfo: yup.object({
+    title: yup.string().required('Title is required'),
+  }),
+});
 
 type Props = Omit<DailyScrum, 'id'> & {
   saving: boolean;
@@ -16,8 +24,13 @@ export default ({ saving, onUpdate, ...props }: Props) => {
   const {
     meetingInfo: { title },
   } = props;
-  const { control, handleSubmit } = useForm<DailyScrum>({
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<DailyScrum>({
     defaultValues: props,
+    resolver: yupResolver(schema),
   });
 
   return (
@@ -43,7 +56,11 @@ export default ({ saving, onUpdate, ...props }: Props) => {
           control={control}
           name='meetingInfo'
           render={({ field: { value, onChange } }) => (
-            <MeetingInfo {...value} onChange={onChange} />
+            <MeetingInfo
+              {...value}
+              errors={errors.meetingInfo}
+              onChange={onChange}
+            />
           )}
         />
         <Controller
