@@ -5,7 +5,6 @@ import { DeepMap, DeepPartial, FieldError } from 'react-hook-form';
 import { DailyScrumMeetingInfo } from '../daily-scrum';
 
 import SectionTitle from '../components/section-title';
-import Label from '../components/label';
 import TextField from '../components/text-field';
 import DurationField from './duration-field';
 import ThemeField from './theme-field';
@@ -41,17 +40,10 @@ export default ({ errors, onChange, ...props }: Props) => {
               />
             </ListGroupItem>
             <ListGroupItem>
-              <Row className='justify-content-between align-items-center'>
-                <Col xs='auto'>
-                  <Label icon='palette'>Theme</Label>
-                </Col>
-                <Col>
-                  <ThemeField
-                    value={theme}
-                    onChange={(change) => onChange({ ...props, theme: change })}
-                  />
-                </Col>
-              </Row>
+              <ThemeField
+                value={theme}
+                onChange={(change) => onChange({ ...props, theme: change })}
+              />
             </ListGroupItem>
           </ListGroup>
         </Col>
