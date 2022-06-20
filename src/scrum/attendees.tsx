@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 
+import Label from './label';
 import { DailyScrum } from '../daily-scrum';
 
 type Props = Pick<DailyScrum, 'attendees'>;
@@ -17,9 +18,7 @@ export default ({ attendees }: Props) => (
         <ListGroup>
           {attendees.map((attendee) => (
             <ListGroupItem key={attendee}>
-              <Row>
-                <Col xs='auto'>{attendee}</Col>
-              </Row>
+              <Label icon='person'>{attendee}</Label>
             </ListGroupItem>
           ))}
         </ListGroup>
