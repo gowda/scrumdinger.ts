@@ -16,3 +16,7 @@
   border-radius: 50%;
   background-color: #5e5e5e;
 }
+
+#theme-selector > .popover-arrow {
+  display: none;
+}

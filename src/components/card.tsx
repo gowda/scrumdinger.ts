@@ -4,9 +4,12 @@ import { Row, Col, Stack } from 'react-bootstrap';
 import Label from './label';
 import { DailyScrum } from '../daily-scrum';
 
-type Props = Pick<DailyScrum, 'title' | 'attendees' | 'lengthInMinutes'>;
+type Props = Omit<DailyScrum, 'id'>;
 
-export default ({ title, attendees, lengthInMinutes }: Props) => (
+export default ({
+  meetingInfo: { title, lengthInMinutes },
+  attendees,
+}: Props) => (
   <Stack className='p-2 rounded'>
     <Row>
       <Col>

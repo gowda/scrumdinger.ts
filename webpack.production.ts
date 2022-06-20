@@ -1,8 +1,8 @@
 import merge from 'webpack-merge';
 import { Configuration } from 'webpack';
-import common from './webpack.common';
+import generateCommon from './webpack.common';
 
-const config: Configuration = merge(common, {
+const config: Configuration = merge(generateCommon('production'), {
   mode: 'production',
 });
 

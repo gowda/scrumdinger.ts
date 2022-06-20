@@ -1,31 +1,45 @@
-import { Theme } from './theme';
+import { Theme, Themes } from './theme';
+
+export interface DailyScrumMeetingInfo {
+  title: string;
+  lengthInMinutes: number;
+  theme: Theme;
+}
+
+type Attendee = string;
 
 export interface DailyScrum {
   id: string;
-  title: string;
-  attendees: string[];
-  lengthInMinutes: number;
-  theme: Theme;
+  meetingInfo: DailyScrumMeetingInfo;
+  attendees: Attendee[];
 }
 
 export const sampleData: DailyScrum[] = [
   {
     id: '001',
-    title: 'Design',
+    meetingInfo: {
+      title: 'Design',
+      lengthInMinutes: 10,
+      theme: Themes.Yellow,
+    },
     attendees: ['Cathy', 'Daisy', 'Simon', 'Jonathan'],
-    lengthInMinutes: 10,
-    theme: Theme.Yellow,
   },
   {
     id: '002',
-    title: 'App Dev',
+    meetingInfo: {
+      title: 'App Dev',
+      lengthInMinutes: 5,
+      theme: Themes.Orange,
+    },
     attendees: ['Katie', 'Gray', 'Euna', 'Luis', 'Darla'],
-    lengthInMinutes: 5,
-    theme: Theme.Orange,
   },
   {
     id: '003',
-    title: 'Web Dev',
+    meetingInfo: {
+      title: 'Web Dev',
+      lengthInMinutes: 5,
+      theme: Themes.Poppy,
+    },
     attendees: [
       'Chella',
       'Chris',
@@ -38,7 +52,5 @@ export const sampleData: DailyScrum[] = [
       'Jenn',
       'Sarah',
     ],
-    lengthInMinutes: 5,
-    theme: Theme.Poppy,
   },
 ];

@@ -1,85 +1,91 @@
-export enum Theme {
-  Bubblegum,
-  Buttercup,
-  Indigo,
-  Lavender,
-  Magenta,
-  Navy,
-  Orange,
-  Oxblood,
-  Perwinkle,
-  Poppy,
-  Purple,
-  Seafoam,
-  Sky,
-  Tan,
-  Teal,
-  Yellow,
-}
-
 type HexColor = `#${string}`;
 export type Color = 'inherit' | 'black' | 'white' | HexColor;
 
-export const accentColor = (theme: Theme): Color => {
-  switch (theme) {
-    case Theme.Bubblegum:
-    case Theme.Buttercup:
-    case Theme.Lavender:
-    case Theme.Orange:
-    case Theme.Perwinkle:
-    case Theme.Poppy:
-    case Theme.Seafoam:
-    case Theme.Sky:
-    case Theme.Tan:
-    case Theme.Teal:
-    case Theme.Yellow:
-      return 'black';
-    case Theme.Indigo:
-    case Theme.Magenta:
-    case Theme.Navy:
-    case Theme.Oxblood:
-    case Theme.Purple:
-      return 'white';
-    default:
-      throw new Error(`Unrecognized theme: ${theme}`);
-  }
-};
+export interface Theme {
+  name: string;
+  mainColor: Color;
+  accentColor: Color;
+}
 
-export const mainColor = (theme: Theme): Color => {
-  switch (theme) {
-    case Theme.Bubblegum:
-      return '#ED80D1';
-    case Theme.Buttercup:
-      return '#FFF095';
-    case Theme.Indigo:
-      return '#360070';
-    case Theme.Lavender:
-      return '#CFCEFF';
-    case Theme.Magenta:
-      return '#A41377';
-    case Theme.Navy:
-      return '#001341';
-    case Theme.Orange:
-      return '#FF8A42';
-    case Theme.Oxblood:
-      return '#49060A';
-    case Theme.Perwinkle:
-      return '#8582FF';
-    case Theme.Poppy:
-      return '#FF5E5E';
-    case Theme.Purple:
-      return '#914AF1';
-    case Theme.Seafoam:
-      return '#CAEAE4';
-    case Theme.Sky:
-      return '#6D92FF';
-    case Theme.Tan:
-      return '#C29B7D';
-    case Theme.Teal:
-      return '#218F9E';
-    case Theme.Yellow:
-      return '#FFDF4D';
-    default:
-      throw new Error(`Unrecognized theme: ${theme}`);
-  }
+export const Themes: { [key: string]: Theme } = {
+  Bubblegum: {
+    name: 'Bubblegum',
+    mainColor: '#ED80D1',
+    accentColor: 'black',
+  },
+  Buttercup: {
+    name: 'Buttercup',
+    mainColor: '#FFF095',
+    accentColor: 'black',
+  },
+  Indigo: {
+    name: 'Indigo',
+    mainColor: '#360070',
+    accentColor: 'white',
+  },
+  Lavender: {
+    name: 'Lavender',
+    mainColor: '#CFCEFF',
+    accentColor: 'black',
+  },
+  Magenta: {
+    name: 'Magenta',
+    mainColor: '#A41377',
+    accentColor: 'white',
+  },
+  Navy: {
+    name: 'Navy',
+    mainColor: '#001341',
+    accentColor: 'white',
+  },
+  Orange: {
+    name: 'Orange',
+    mainColor: '#FF8A42',
+    accentColor: 'black',
+  },
+  Oxblood: {
+    name: 'Oxblood',
+    mainColor: '#49060A',
+    accentColor: 'white',
+  },
+  Perwinkle: {
+    name: 'Perwinkle',
+    mainColor: '#8582FF',
+    accentColor: 'black',
+  },
+  Poppy: {
+    name: 'Poppy',
+    mainColor: '#FF5E5E',
+    accentColor: 'black',
+  },
+  Purple: {
+    name: 'Purple',
+    mainColor: '#914AF1',
+    accentColor: 'white',
+  },
+  Seafoam: {
+    name: 'Seaform',
+    mainColor: '#CAEAE4',
+    accentColor: 'black',
+  },
+  Sky: {
+    name: 'Sky',
+    mainColor: '#6D92FF',
+    accentColor: 'black',
+  },
+  Tan: {
+    name: 'Tan',
+    mainColor: '#C29B7D',
+    accentColor: 'black',
+  },
+  Teal: {
+    name: 'Teal',
+    mainColor: '#218F9E',
+    accentColor: 'black',
+  },
+  Yellow: {
+    name: 'Yellow',
+    mainColor: '#FFDF4D',
+    accentColor: 'black',
+  },
 };

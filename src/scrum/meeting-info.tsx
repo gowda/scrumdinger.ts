@@ -2,13 +2,12 @@ import React from 'react';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
-import { DailyScrum } from '../daily-scrum';
-import { mainColor, Theme } from '../theme';
+import { DailyScrumMeetingInfo } from '../daily-scrum';
 
 import SectionTitle from '../components/section-title';
 import Label from '../components/label';
 
-type Props = Pick<DailyScrum, 'id' | 'lengthInMinutes' | 'theme'>;
+type Props = DailyScrumMeetingInfo & { id: string };
 
 export default ({ id, lengthInMinutes, theme }: Props) => (
   <>
@@ -47,9 +46,9 @@ export default ({ id, lengthInMinutes, theme }: Props) => (
               <Col
                 xs='auto'
                 className='rounded'
-                style={{ backgroundColor: mainColor(theme) }}
+                style={{ backgroundColor: theme.mainColor }}
               >
-                {Theme[theme]}
+                {theme.name}
               </Col>
             </Row>
           </ListGroupItem>
