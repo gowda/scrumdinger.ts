@@ -1,7 +1,8 @@
 import React from 'react';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Card from '../card';
+
+import Card from '../components/card';
 import { DailyScrum } from '../daily-scrum';
 import { accentColor, mainColor } from '../theme';
 
