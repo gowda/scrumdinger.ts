@@ -28,6 +28,9 @@ const config: Configuration = {
     new CopyPlugin({
       patterns: [{ from: 'styles/**/*.css', to: 'css/[name][ext]' }],
     }),
+    new CopyPlugin({
+      patterns: [{ from: 'public/favicon.ico', to: 'favicon.ico' }],
+    }),
     new HtmlWebpackPlugin({ template: 'src/index.ejs' }),
   ],
 };

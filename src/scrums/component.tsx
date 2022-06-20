@@ -1,8 +1,9 @@
 import React from 'react';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
-import Card from './card';
-import { DailyScrum } from './daily-scrum';
-import { accentColor, mainColor } from './theme';
+import { Link } from 'react-router-dom';
+import Card from '../card';
+import { DailyScrum } from '../daily-scrum';
+import { accentColor, mainColor } from '../theme';
 
 interface Props {
   scrums: DailyScrum[];
@@ -21,7 +22,19 @@ export default ({ scrums }: Props) => (
               color: accentColor(theme),
             }}
           >
-            <Card {...rest} />
+            <Link
+              to={`/scrums/${id}`}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <Row className='align-items-center'>
+                <Col>
+                  <Card {...rest} />
+                </Col>
+                <Col xs='auto' className='ps-0'>
+                  <i className='bi-chevron-right' />
+                </Col>
+              </Row>
+            </Link>
           </ListGroupItem>
         ))}
       </ListGroup>
