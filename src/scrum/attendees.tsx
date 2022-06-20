@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 
+import SectionTitle from '../components/section-title';
 import Label from '../components/label';
 import { DailyScrum } from '../daily-scrum';
 
@@ -8,11 +9,7 @@ type Props = Pick<DailyScrum, 'attendees'>;
 
 export default ({ attendees }: Props) => (
   <>
-    <Row className='mt-4'>
-      <Col>
-        <h4>ATTENDEES</h4>
-      </Col>
-    </Row>
+    <SectionTitle title='ATTENDEES' />
     <Row className='mt-2'>
       <Col>
         <ListGroup>

@@ -7,9 +7,14 @@ import Attendees from './attendees';
 
 type Props = DailyScrum;
 
-export default (props: Props) => (
+export default ({ title, ...props }: Props) => (
   <Row className='justify-content-center p-4'>
     <Col xs={12} sm={6}>
+      <Row>
+        <Col>
+          <h2 className='my-0'>{title}</h2>
+        </Col>
+      </Row>
       <MeetingInfo {...props} />
       <Attendees {...props} />
     </Col>
