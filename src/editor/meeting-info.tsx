@@ -28,6 +28,7 @@ export default ({ errors, onChange, ...props }: Props) => {
               <Row className='align-items-center'>
                 <Col>
                   <TextField
+                    placeholder='Scrum title...'
                     value={title}
                     onChange={(change) => onChange({ ...props, title: change })}
                   />
