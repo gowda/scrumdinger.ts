@@ -29,7 +29,7 @@ jobs:
           cp -va dist/workers .
       - name: Remove all the source
         run: |
-          rm -rf src cypress types styles .github
+          rm -rf src cypress types styles .github public
           rm package.json package-lock.json README.md
           rm webpack.*.ts jest.config.js
           rm .eslintignore .eslintrc.js .prettierrc cypress.json tsconfig.json tsconfig.webpack.json
@@ -39,6 +39,6 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config user.name "${{ github.actor }}"
           git fetch --unshallow origin
-          git add bundle.js index.html css
+          git add bundle.js index.html css images workers
           git commit -a -m 'Update gh-pages on master changes'
           git push -f origin ${{ github.ref }}:gh-pages
