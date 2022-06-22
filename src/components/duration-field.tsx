@@ -1,8 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-import FormRange from 'react-bootstrap/esm/FormRange';
-
 import Label from './label';
 
 interface Props {
@@ -16,8 +14,9 @@ export default ({ value, onChange }: Props) => (
       <Label icon='clock'>Length</Label>
     </Col>
     <Col>
-      <FormRange
+      <input
         name='length'
+        type='range'
         value={value}
         min='5'
         max='30'
