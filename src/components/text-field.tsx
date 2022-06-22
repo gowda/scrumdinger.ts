@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
 interface Props {
+  name: string;
   placeholder?: string;
   value?: string;
   errorMessage?: string;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export default ({
+  name,
   placeholder,
   value,
   errorMessage,
@@ -20,6 +22,7 @@ export default ({
     <Row className='align-items-center'>
       <Col>
         <input
+          name={name}
           type='text'
           className='form-control rounded-0 border-start-0 border-end-0 border-top-0 px-0 py-1 shadow-none'
           placeholder={placeholder}

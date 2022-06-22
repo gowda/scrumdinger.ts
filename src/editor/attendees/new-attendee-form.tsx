@@ -22,6 +22,7 @@ export default ({ onAdd }: Props) => {
       </Col>
       <Col>
         <TextField
+          name='attendee'
           placeholder='Attendee name...'
           value={newAttendee}
           onChange={(change) => setNewAttendee(change)}

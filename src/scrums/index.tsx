@@ -4,6 +4,7 @@ import LoadingMessage from '../components/loading-message';
 import ErrorMessage from '../components/error-message';
 
 import { useScrums } from '../queries';
+import Blank from './blank';
 import Component from './component';
 
 export default () => {
@@ -13,7 +14,9 @@ export default () => {
     <>
       {isLoading && <LoadingMessage />}
       {isError && error && <ErrorMessage message={error.message} />}
-      {isSuccess && scrums && <Component scrums={scrums} />}
+      {isSuccess &&
+        scrums &&
+        (scrums.length === 0 ? <Blank /> : <Component scrums={scrums} />)}
     </>
   );
 };

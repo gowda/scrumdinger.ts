@@ -1,0 +1,52 @@
+[
+  {
+    "id": "001",
+    "meetingInfo": {
+      "title": "Design",
+      "lengthInMinutes": 10,
+      "theme": {
+        "name": "Yellow",
+        "mainColor": "#FFDF4D",
+        "accentColor": "black"
+      }
+    },
+    "attendees": ["Cathy", "Daisy", "Simon", "Jonathan"]
+  },
+  {
+    "id": "002",
+    "meetingInfo": {
+      "title": "App Dev",
+      "lengthInMinutes": 5,
+      "theme": {
+        "name": "Orange",
+        "mainColor": "#FF8A42",
+        "accentColor": "black"
+      }
+    },
+    "attendees": ["Katie", "Gray", "Euna", "Luis", "Darla"]
+  },
+  {
+    "id": "003",
+    "meetingInfo": {
+      "title": "Web Dev",
+      "lengthInMinutes": 5,
+      "theme": {
+        "name": "Poppy",
+        "mainColor": "#FF5E5E",
+        "accentColor": "black"
+      }
+    },
+    "attendees": [
+      "Chella",
+      "Chris",
+      "Christina",
+      "Eden",
+      "Karla",
+      "Lindsey",
+      "Aga",
+      "Chad",
+      "Jenn",
+      "Sarah"
+    ]
+  }
+]

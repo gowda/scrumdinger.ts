@@ -13,7 +13,12 @@ export default ({ statusText, lastSpeaker, onSkip }: Props) => (
       <span>{statusText}</span>
     </Col>
     <Col xs='auto'>
-      <Button className='shadow-none' disabled={lastSpeaker} onClick={onSkip}>
+      <Button
+        name='skip'
+        className='shadow-none'
+        disabled={lastSpeaker}
+        onClick={onSkip}
+      >
         <i className='bi-skip-forward' />
       </Button>
     </Col>

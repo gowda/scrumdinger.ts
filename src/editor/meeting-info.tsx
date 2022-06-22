@@ -24,6 +24,7 @@ export default ({ errors, onChange, ...props }: Props) => {
           <ListGroup>
             <ListGroupItem>
               <TextField
+                name='name'
                 placeholder='Scrum title...'
                 value={title}
                 errorMessage={errors?.title?.message}

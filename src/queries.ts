@@ -1,10 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { DailyScrum, sampleData } from './daily-scrum';
+import { DailyScrum } from './daily-scrum';
 import { getId, getScrums, setScrums } from './store';
-
-getScrums().then((scrums) =>
-  scrums.length === 0 ? setScrums(sampleData) : scrums
-);
 
 export const useScrums = () =>
   useQuery<DailyScrum[], Error>(['scrums'], () => getScrums());

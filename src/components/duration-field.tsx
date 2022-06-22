@@ -17,6 +17,7 @@ export default ({ value, onChange }: Props) => (
     </Col>
     <Col>
       <FormRange
+        name='length'
         value={value}
         min='5'
         max='30'
