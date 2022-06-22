@@ -5,17 +5,18 @@ import LoadingMessage from '../components/loading-message';
 import ErrorMessage from '../components/error-message';
 import Component from './component';
 
-import { useScrum } from '../queries';
+import { useTimeKeeper } from '../hooks/time-keeper';
 
 export default () => {
   const { id } = useParams();
-  const { isLoading, isError, error, isSuccess, data: scrum } = useScrum(id);
+  const { isLoading, isError, error, isRunning, timer, skipSpeaker } =
+    useTimeKeeper(id);
 
   return (
     <>
       {isLoading && <LoadingMessage />}
       {isError && error && <ErrorMessage message={error.message} />}
-      {isSuccess && scrum && <Component {...scrum} />}
+      {isRunning && timer && <Component {...timer} skipSpeaker={skipSpeaker} />}
     </>
   );
 };
