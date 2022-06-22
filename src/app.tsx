@@ -16,11 +16,11 @@ export default () => (
         <Col xs={12} md={6}>
           <Navbar />
           <Routes>
-            <Route path='/' element={<Scrums />} />
-            <Route path='/scrums/new' element={<NewScrum />} />
-            <Route path='/scrums/:id/meeting' element={<Meeting />} />
-            <Route path='/scrums/:id/edit' element={<EditScrum />} />
-            <Route path='/scrums/:id' element={<Scrum />} />
+            <Route path='' element={<Scrums />} />
+            <Route path='scrums/new' element={<NewScrum />} />
+            <Route path='scrums/:id/meeting' element={<Meeting />} />
+            <Route path='scrums/:id/edit' element={<EditScrum />} />
+            <Route path='scrums/:id' element={<Scrum />} />
           </Routes>
         </Col>
       </Row>
