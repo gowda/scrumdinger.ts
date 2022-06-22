@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col, Stack } from 'react-bootstrap';
 
-import Label from './label';
-import { DailyScrum } from '../daily-scrum';
+import Label from '../../components/label';
+import { DailyScrum } from '../../daily-scrum';
 
 type Props = Omit<DailyScrum, 'id'>;
 
