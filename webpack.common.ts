@@ -4,7 +4,10 @@ import CopyPlugin from 'copy-webpack-plugin';
 import { Configuration } from 'webpack';
 
 const config = (env: 'development' | 'production'): Configuration => ({
-  entry: './src/index.tsx',
+  entry: {
+    app: './src/index.tsx',
+    'time-keeper': './src/workers/time-keeper.ts',
+  },
   module: {
     rules: [
       {
@@ -22,7 +25,13 @@ const config = (env: 'development' | 'production'): Configuration => ({
   resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: (pathData) => {
+      if (pathData.chunk?.name === 'app') {
+        return 'bundle.js';
+      }
+
+      return 'workers/[name].js';
+    },
     publicPath: env === 'development' ? '/' : '',
   },
   plugins: [
@@ -35,7 +44,7 @@ const config = (env: 'development' | 'production'): Configuration => ({
     new CopyPlugin({
       patterns: [{ from: 'public/favicon.ico', to: 'favicon.ico' }],
     }),
-    new HtmlWebpackPlugin({ template: 'src/index.ejs' }),
+    new HtmlWebpackPlugin({ template: 'src/index.ejs', chunks: ['app'] }),
   ],
 });
 

@@ -37,6 +37,7 @@ export default ({
               <Ring center={CENTER} radius={RADIUS} color={theme.accentColor} />
               {_.range(0, totalSpeakers).map((index) => (
                 <Arc
+                  key={index}
                   center={CENTER}
                   radius={RADIUS}
                   startAngle={index * (360.0 / totalSpeakers)}
