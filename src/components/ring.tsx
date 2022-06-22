@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Point } from './point';
+import { Point } from '../point';
 
 interface Props {
   center: Point;

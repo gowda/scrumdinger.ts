@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { Point } from './point';
-import { sin, cos } from './trigonometry';
+import { Point } from '../point';
+import { sin, cos } from '../trigonometry';
 
 interface Props {
   center: Point;
