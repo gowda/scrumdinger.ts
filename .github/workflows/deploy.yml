@@ -23,7 +23,10 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Copy generated javascript bundle
-        run: cp -va dist/bundle.js dist/css dist/index.html .
+        run: |
+          cp -va dist/bundle.js dist/css dist/index.html .
+          cp -va dist/images .
+          cp -va dist/workers .
       - name: Remove all the source
         run: |
           rm -rf src cypress types styles .github
