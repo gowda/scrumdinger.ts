@@ -1,11 +1,14 @@
+import { Theme } from './theme';
+
 export interface DailyScrumTimer {
   intervalID?: NodeJS.Timeout;
   speakers: string[];
   totalSpeakers: number;
   currentSpeaker: string;
   currentSpeakerIndex: number;
-  secondsTotal: number;
+  lastSpeaker: boolean;
+  lengthInMinutes: number;
   secondsPerSpeaker: number;
   statusText: string;
-  lastSpeaker: boolean;
+  theme: Theme;
 }

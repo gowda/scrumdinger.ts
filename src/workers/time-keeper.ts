@@ -36,7 +36,7 @@ const updateTimer = () => {
   }
 };
 const startTimer = ({
-  meetingInfo: { lengthInMinutes },
+  meetingInfo: { lengthInMinutes, theme },
   attendees,
 }: DailyScrum) => {
   const secondsTotal = lengthInMinutes * 60;
@@ -48,11 +48,12 @@ const startTimer = ({
     totalSpeakers: attendees.length,
     currentSpeakerIndex: 0,
     currentSpeaker: attendees[0],
+    lastSpeaker: false,
     intervalID: setInterval(updateTimer, secondsPerSpeaker * 1000),
-    secondsTotal,
+    lengthInMinutes,
     secondsPerSpeaker,
     statusText: `Speaker 1 of ${attendees.length}`,
-    lastSpeaker: false,
+    theme,
   };
 
   ctx.postMessage(scrum);
