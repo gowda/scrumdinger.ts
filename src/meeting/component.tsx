@@ -3,7 +3,7 @@ import React from 'react';
 import { DailyScrum } from '../daily-scrum';
 import LoadingMessage from '../components/loading-message';
 import Progress from './progress';
-import TimeProgress from './time-progress';
+import Header from './header';
 import SpeakerProgress from './speaker-progress';
 import { useTimeKeeper } from '../hooks/time-keeper';
 
@@ -21,7 +21,7 @@ export default (props: Props) => {
       {isLoading && <LoadingMessage />}
       {isRunning && timer && (
         <div className='d-flex flex-column justify-content-between py-4'>
-          <TimeProgress lengthInMinutes={lengthInMinutes} />
+          <Header lengthInMinutes={lengthInMinutes} />
           <Progress
             currentSpeaker={timer.currentSpeaker}
             currentSpeakerIndex={timer.currentSpeakerIndex}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack } from 'react-bootstrap';
 
-import Label from '../components/label';
+import Label from '../../components/label';
 
 interface Props {
   value: number;
