@@ -1,7 +1,7 @@
 # scrumdinger
 
-![](https://github.com/gowda/scrumdinger/workflows/lint-and-tests/badge.svg)
-![](https://github.com/gowda/scrumdinger/workflows/cypress/badge.svg)
+![](https://github.com/gowda/scrumdinger.ts/workflows/lint-and-tests/badge.svg)
+![](https://github.com/gowda/scrumdinger.ts/workflows/cypress/badge.svg)
 
 [iOS App Dev Tutorial](https://developer.apple.com/tutorials/app-dev-training/getting-started-with-scrumdinger) implementation in React.
 
