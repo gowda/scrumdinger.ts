@@ -1,20 +1,11 @@
-# react.ts.template
+# scrumdinger
 
-![](https://github.com/gowda/react.ts.template/workflows/lint-and-tests/badge.svg)
-![](https://github.com/gowda/react.ts.template/workflows/cypress/badge.svg)
+![](https://github.com/gowda/scrumdinger/workflows/lint-and-tests/badge.svg)
+![](https://github.com/gowda/scrumdinger/workflows/cypress/badge.svg)
 
-template for react application in typescript.
+[iOS App Dev Tutorial](https://developer.apple.com/tutorials/app-dev-training/getting-started-with-scrumdinger) implementation in React.
 
 ## Usage
-
-`react-app` is assumed as name of the application to be created.
-
-#### Clone the repository
-
-```bash
-$ git clone git@github.com:gowda/react.ts.template.git react-app
-$ cd react-app
-```
 
 #### Install dependencies
 
@@ -29,18 +20,12 @@ $ npm run server
 ```
 
 Development server listens at [http://localhost:3000](http://localhost:3000).
-Can be changed by updating [webpack.development.ts](webpack.development.ts#L12).
 
 #### Run linter
 
 ```bash
 $ npm run lint
 ```
-
-[ESLint](https://eslint.org/) is configured to extend from
-[eslint-config-airbnb-typescript](https://github.com/airbnb/javascript)
-
-Configuratin is in [.eslintrc.js](.eslintrc.js)
 
 #### Run unit tests
 
