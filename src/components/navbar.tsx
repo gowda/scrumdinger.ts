@@ -11,7 +11,9 @@ export default () => (
         <Row className='align-items-end'>
           <Col xs='auto' className='px-0'>
             <img
-              src={`${BASENAME}images/logo.png`}
+              src={`${
+                BASENAME === '/' ? BASENAME : `${BASENAME}/`
+              }images/logo.png`}
               alt='Scrumdinger'
               width={64}
             />
