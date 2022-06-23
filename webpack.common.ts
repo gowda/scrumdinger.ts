@@ -32,7 +32,13 @@ const config = (env: 'development' | 'production'): Configuration => ({
 
       return 'workers/[name].js';
     },
-    publicPath: env === 'development' ? '/' : '',
+    publicPath:
+      // eslint-disable-next-line no-nested-ternary
+      env === 'development'
+        ? '/'
+        : process.env.REACT_APP_BASENAME
+        ? `/${process.env.REACT_APP_BASENAME}`
+        : '',
   },
   plugins: [
     new EnvironmentPlugin({ REACT_APP_BASENAME: '' }),
