@@ -14,7 +14,11 @@ export const useTimeKeeper = (id?: string) => {
   useEffect(() => {
     const url = new URL(window.location.href);
     const base = `${url.protocol}//${url.host}`;
-    setWorkerUrl(`${base}${BASENAME}workers/time-keeper.js`);
+    setWorkerUrl(
+      `${base}${
+        BASENAME === '/' ? BASENAME : `${BASENAME}/`
+      }workers/time-keeper.js`
+    );
   }, [window.location.href]);
 
   useEffect(() => {
