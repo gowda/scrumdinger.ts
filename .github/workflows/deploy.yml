@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: 12.x
       - run: npm ci
+      - run: |
+          REACT_APP_BASENAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
+          echo "REACT_APP_BASENAME=$REACT_APP_BASENAME" >> $GITHUB_ENV
       - run: npm run build
       - name: Copy generated javascript bundle
         run: |

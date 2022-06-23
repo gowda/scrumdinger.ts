@@ -9,18 +9,22 @@ import Scrum from './scrum';
 import EditScrum from './edit-scrum';
 import Meeting from './meeting';
 
-export default () => (
-  <BrowserRouter>
+interface Props {
+  basename: string;
+}
+
+export default ({ basename }: Props) => (
+  <BrowserRouter basename={basename}>
     <Container fluid>
       <Row className='justify-content-center'>
         <Col xs={12} md={6}>
           <Navbar />
           <Routes>
-            <Route path='' element={<Scrums />} />
-            <Route path='scrums/new' element={<NewScrum />} />
-            <Route path='scrums/:id/meeting' element={<Meeting />} />
-            <Route path='scrums/:id/edit' element={<EditScrum />} />
-            <Route path='scrums/:id' element={<Scrum />} />
+            <Route path='/' element={<Scrums />} />
+            <Route path='/scrums/new' element={<NewScrum />} />
+            <Route path='/scrums/:id/meeting' element={<Meeting />} />
+            <Route path='/scrums/:id/edit' element={<EditScrum />} />
+            <Route path='/scrums/:id' element={<Scrum />} />
           </Routes>
         </Col>
       </Row>

@@ -6,10 +6,11 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import App from './app';
 
 const queryClient = new QueryClient();
+const BASENAME = `/${process.env.REACT_APP_BASENAME || ''}`;
 
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <App basename={BASENAME} />
     <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>,
   document.getElementById('root')

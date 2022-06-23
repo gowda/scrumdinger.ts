@@ -1,7 +1,7 @@
 import * as path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
-import { Configuration } from 'webpack';
+import { Configuration, EnvironmentPlugin } from 'webpack';
 
 const config = (env: 'development' | 'production'): Configuration => ({
   entry: {
@@ -35,6 +35,7 @@ const config = (env: 'development' | 'production'): Configuration => ({
     publicPath: env === 'development' ? '/' : '',
   },
   plugins: [
+    new EnvironmentPlugin({ REACT_APP_BASENAME: '' }),
     new CopyPlugin({
       patterns: [{ from: 'styles/**/*.css', to: 'css/[name][ext]' }],
     }),
@@ -44,7 +45,13 @@ const config = (env: 'development' | 'production'): Configuration => ({
     new CopyPlugin({
       patterns: [{ from: 'public/favicon.ico', to: 'favicon.ico' }],
     }),
-    new HtmlWebpackPlugin({ template: 'src/index.ejs', chunks: ['app'] }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.ejs',
+      chunks: ['app'],
+      basename: process.env.REACT_APP_BASENAME
+        ? `/${process.env.REACT_APP_BASENAME}`
+        : '',
+    }),
   ],
 });
 
