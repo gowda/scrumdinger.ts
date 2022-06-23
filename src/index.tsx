@@ -4,9 +4,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import App from './app';
+import { BASENAME } from './config';
 
 const queryClient = new QueryClient();
-const BASENAME = `/${process.env.REACT_APP_BASENAME || ''}`;
 
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>

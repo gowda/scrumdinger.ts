@@ -1,19 +1,25 @@
 import { useEffect, useState } from 'react';
 
+import { BASENAME } from '../config';
 import { DailyScrumTimer } from '../daily-scrum-timer';
 import { useScrum } from '../queries';
 
 // eslint-disable-next-line import/prefer-default-export
 export const useTimeKeeper = (id?: string) => {
   const { isLoading, isError, error, isSuccess, data: scrum } = useScrum(id);
+  const [workerUrl, setWorkerUrl] = useState<string>();
   const [worker, setWorker] = useState<Worker>();
   const [timer, setTimer] = useState<DailyScrumTimer>();
 
   useEffect(() => {
-    if (!worker && isSuccess) {
-      const localWorker = new Worker(
-        new URL('workers/time-keeper.js', 'http://localhost:3000')
-      );
+    const url = new URL(window.location.href);
+    const base = `${url.protocol}//${url.host}`;
+    setWorkerUrl(`${base}${BASENAME}workers/time-keeper.js`);
+  }, [window.location.href]);
+
+  useEffect(() => {
+    if (!worker && isSuccess && workerUrl) {
+      const localWorker = new Worker(new URL(workerUrl));
       localWorker.addEventListener(
         'message',
         ({ data }: MessageEvent<DailyScrumTimer>) => {
@@ -28,7 +34,7 @@ export const useTimeKeeper = (id?: string) => {
       worker?.terminate();
       setWorker(undefined);
     };
-  }, [id, isSuccess]);
+  }, [id, isSuccess, workerUrl]);
 
   if (isLoading) {
     return {
