@@ -5,6 +5,8 @@
 
 [iOS App Dev Tutorial](https://developer.apple.com/tutorials/app-dev-training/getting-started-with-scrumdinger) implementation in React.
 
+[Demo](https://gowda.github.io/scrumdinger.ts/)
+
 ## Usage
 
 #### Install dependencies
