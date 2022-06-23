@@ -15,6 +15,7 @@ export default ({ value, onChange }: Props) => (
     </Col>
     <Col>
       <input
+        className='form-range'
         name='length'
         type='range'
         value={value}
